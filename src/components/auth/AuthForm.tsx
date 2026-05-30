@@ -31,7 +31,6 @@ export default function AuthForm({ mode }: Props) {
     e.preventDefault();
     if (isLogin) {
       await login({ email: form.email, password: form.password });
-      router.push("/");
     } else {
       await register({
         name: form.name,
