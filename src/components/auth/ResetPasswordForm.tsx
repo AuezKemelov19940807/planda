@@ -45,10 +45,7 @@ export default function ResetPasswordForm() {
   };
 
   return (
-    <form
-      className="flex flex-col gap-y-5 items-center justify-center"
-      onSubmit={handleSubmit}
-    >
+    <form className="flex flex-col gap-y-5 " onSubmit={handleSubmit}>
       <PasswordField mode="register" value={password} onChange={setPassword} />
       <AuthButton loading={loading} text="Құпия сөзді жаңарту" />
     </form>
