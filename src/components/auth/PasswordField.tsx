@@ -1,5 +1,5 @@
 "use client";
-
+import Link from "next/link";
 import { useState } from "react";
 
 type Mode = "login" | "register";
@@ -17,9 +17,12 @@ export default function PasswordField({ value, onChange, mode }: Props) {
   return (
     <fieldset className="relative">
       {isLogin && (
-        <span className="text-xs text-blue-700 absolute text-blue right-0 font-medium cursor-pointer">
+        <Link
+          href="/forgot-password"
+          className="text-xs text-blue-700 absolute text-blue right-0 font-medium cursor-pointer"
+        >
           forgot password
-        </span>
+        </Link>
       )}
 
       <label className="block text-sm font-medium text-gray-700">

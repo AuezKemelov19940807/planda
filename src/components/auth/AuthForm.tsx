@@ -9,6 +9,7 @@ import Deliver from "./Divider";
 import SocialAuth from "./SocialAuth";
 import NameField from "./NameField";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 type Mode = "login" | "register";
 
@@ -18,8 +19,7 @@ interface Props {
 
 export default function AuthForm({ mode }: Props) {
   const router = useRouter();
-  const { login, register, getProfile, logout, loading, error, user } =
-    useAuthStore();
+  const { login, register, loading, error } = useAuthStore();
   const isLogin = mode === "login";
   const [form, setForm] = useState({
     name: "",
@@ -30,13 +30,30 @@ export default function AuthForm({ mode }: Props) {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (isLogin) {
-      await login({ email: form.email, password: form.password });
+      try {
+        await login({
+          email: form.email,
+          password: form.password,
+        });
+
+        toast.success("Добро пожаловать!");
+        router.push("/");
+      } catch (err: any) {
+        toast.error(err.message);
+      }
     } else {
-      await register({
-        name: form.name,
-        email: form.email,
-        password: form.password,
-      });
+      try {
+        await register({
+          name: form.name,
+          email: form.email,
+          password: form.password,
+        });
+
+        toast.success("Аккаунт успешно создан");
+        router.push("/");
+      } catch (err: any) {
+        toast.error(err.message);
+      }
     }
   };
 
@@ -59,7 +76,7 @@ export default function AuthForm({ mode }: Props) {
           value={form.password}
           onChange={(val) => setForm({ ...form, password: val })}
         />
-        <AuthButton text={isLogin ? "Кіру" : "Тіркелу"} />
+        <AuthButton loading={loading} text={isLogin ? "Кіру" : "Тіркелу"} />
       </form>
       <Deliver />
       <SocialAuth />

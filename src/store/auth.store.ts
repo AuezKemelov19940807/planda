@@ -33,7 +33,6 @@ interface AuthStore {
 
 export const useAuthStore = create<AuthStore>((set) => ({
   user: null,
-
   loading: false,
   error: null,
   login: async (data: LoginDto) => {
@@ -46,9 +45,11 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       set({ user: res.data.user });
     } catch (error: any) {
-      set({
-        error: error.response?.data?.message || "Login failed",
-      });
+      const message = error.response?.data?.message || "Login failed";
+
+      set({ error: message });
+
+      throw new Error(message);
     } finally {
       set({ loading: false });
     }
@@ -56,11 +57,20 @@ export const useAuthStore = create<AuthStore>((set) => ({
   register: async (data: RegisterDto) => {
     try {
       set({ loading: true, error: null });
-      await api.post("/auth/register", data);
-    } catch (error: any) {
+
+      const res = await api.post("/auth/register", data);
+
       set({
-        error: error.response?.data?.message || "Register failed",
+        user: res.data.user,
       });
+
+      return res.data;
+    } catch (error: any) {
+      const message = error.response?.data?.message || "Register failed";
+
+      set({ error: message });
+
+      throw new Error(message);
     } finally {
       set({ loading: false });
     }

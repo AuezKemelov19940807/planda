@@ -1,3 +1,5 @@
+import { LoaderCircle } from "lucide-react";
+
 interface Props {
   text: string;
   loading?: boolean;
@@ -10,7 +12,13 @@ export default function AuthButton({ text, loading }: Props) {
       type="submit"
       disabled={loading}
     >
-      {loading ? "Loading..." : text}
+      {loading ? (
+        <div className="flex items-center gap-2">
+          <LoaderCircle size={18} className="animate-spin" />
+        </div>
+      ) : (
+        text
+      )}
     </button>
   );
 }
