@@ -4,6 +4,8 @@ import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { api } from "@/shared/lib/api";
+import PasswordField from "./PasswordField";
+import AuthButton from "./AuthButton";
 
 export default function ResetPasswordForm() {
   const router = useRouter();
@@ -44,15 +46,8 @@ export default function ResetPasswordForm() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-
-      <button disabled={loading}>
-        {loading ? "Loading..." : "Reset password"}
-      </button>
+      <PasswordField mode="register" value={password} onChange={setPassword} />
+      <AuthButton loading={loading} text="Құпия сөзді жаңарту" />
     </form>
   );
 }
