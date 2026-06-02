@@ -1,19 +1,12 @@
 "use client";
 
-import { useSearchParams, useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
-
-import PasswordField from "./PasswordField";
-import AuthButton from "./AuthButton";
 import { api } from "@/shared/lib/api";
 
-export default function ResetPasswordForm() {
+export default function ResetPasswordForm({ token }: { token: string | null }) {
   const router = useRouter();
-  const searchParams = useSearchParams();
-
-  const token = searchParams.get("token");
-  console.log("Token:", token);
 
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -48,9 +41,15 @@ export default function ResetPasswordForm() {
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-y-6">
-      <PasswordField mode="register" value={password} onChange={setPassword} />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
 
-      <AuthButton loading={loading} text="Құпия сөзді жаңарту" />
+      <button disabled={loading}>
+        {loading ? "Loading..." : "Reset password"}
+      </button>
     </form>
   );
 }
