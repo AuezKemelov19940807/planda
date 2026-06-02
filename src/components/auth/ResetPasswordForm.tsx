@@ -1,12 +1,15 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useSearchParams, useRouter } from "next/navigation";
 import { useState } from "react";
 import { toast } from "sonner";
 import { api } from "@/shared/lib/api";
 
-export default function ResetPasswordForm({ token }: { token: string | null }) {
+export default function ResetPasswordForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const token = searchParams.get("token");
 
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -28,12 +31,9 @@ export default function ResetPasswordForm({ token }: { token: string | null }) {
       });
 
       toast.success("Құпия сөз жаңартылды");
-
       router.push("/login");
     } catch (error: any) {
-      toast.error(
-        error.response?.data?.message || "Құпия сөзді жаңарту мүмкін болмады",
-      );
+      toast.error(error.response?.data?.message || "Қате орын алды");
     } finally {
       setLoading(false);
     }
