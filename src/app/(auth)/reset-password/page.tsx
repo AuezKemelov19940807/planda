@@ -1,3 +1,7 @@
+export const dynamic = "force-dynamic";
+
+("use client");
+
 import AuthLayout from "@/components/auth/AuthLayout";
 import ResetPasswordForm from "@/components/auth/ResetPasswordForm";
 
