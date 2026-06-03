@@ -4,7 +4,7 @@ export default function SocialAuth() {
   const API_URL = "https://planola-back.fly.dev";
 
   const handleGoogle = () => {
-    window.location.href = `${API_URL}/auth/google`;
+    window.location.href = `${API_URL}/auth/google?prompt=consent&access_type=offline`;
   };
 
   return (
