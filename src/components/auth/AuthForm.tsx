@@ -37,7 +37,7 @@ export default function AuthForm({ mode }: Props) {
         });
 
         toast.success("Добро пожаловать!");
-        router.push("/");
+        router.push("/dashboard");
       } catch (err: any) {
         toast.error(err.message);
       }

@@ -3,7 +3,7 @@ import { LayoutDashboard, BarChart3 } from "lucide-react";
 export const navigation = [
   {
     title: "Басқару тақтасы",
-    path: "/",
+    path: "/dashboard",
     icon: LayoutDashboard,
   },
   {
