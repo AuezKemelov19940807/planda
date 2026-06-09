@@ -1,0 +1,13 @@
+{
+  "home": {
+    "title": "Привет"
+  },
+    "HomePage": {
+      "title": "Панель управления"
+  },
+
+    "Navigation": {
+     "dashboard": "Панель управления",
+    "analytics": "Аналитика"
+  }
+}

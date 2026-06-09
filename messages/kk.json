@@ -1,0 +1,12 @@
+{
+  "home": {
+    "title": "Сәлем"
+  },
+   "HomePage": {
+    "title": "Перне басқару"
+  },
+  "Navigation": {
+     "dashboard": "Басқару тақтасы",
+    "analytics": "Талдау"
+  }
+}

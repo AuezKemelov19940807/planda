@@ -1,0 +1,13 @@
+{
+  "home": {
+    "title": "Hello"
+  },
+  "HomePage": {
+    "title": "Dashboard"
+  },
+
+  "Navigation": {
+    "dashboard": "Dashboard",
+    "analytics": "Analytics"
+  }
+}

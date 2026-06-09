@@ -3,8 +3,8 @@
 import { useState } from "react";
 import { toast } from "sonner";
 import { api } from "@/shared/lib/api";
-import EmailField from "./auth/EmailField";
-import AuthButton from "./auth/AuthButton";
+import EmailField from "./EmailField";
+import AuthButton from "./AuthButton";
 
 export default function ForgotPasswordForm() {
   const [email, setEmail] = useState("");
