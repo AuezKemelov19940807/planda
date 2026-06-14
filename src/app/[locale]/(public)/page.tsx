@@ -15,10 +15,10 @@ export default function LandingPage() {
       </p>
 
       <Link
-        href="/login"
+        href="/dashboard"
         className="mt-6 bg-green text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
       >
-        Перейти к входу
+        Перейти к Админ панели
       </Link>
 
       <footer className="absolute bottom-6 text-xs text-gray-400">
