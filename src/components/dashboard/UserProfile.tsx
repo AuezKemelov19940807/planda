@@ -37,7 +37,7 @@ export default function UserProfile() {
     router.push("/login");
   };
 
-  if (!user) {
+  if (isAuthLoading) {
     return <UserSkeleton />;
   }
 
