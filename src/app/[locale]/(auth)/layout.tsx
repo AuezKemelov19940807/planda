@@ -14,10 +14,10 @@ export default function AuthLayout({
         <LangSwitcher />
       </div>
 
-      <div className="w-full px-3 md:px-0 md:w-1/2 lg:max-w-102.75 lg:w-full">
+      <div className="w-full px-3 pb-10 md:pb-0 md:px-0 md:w-1/2 lg:max-w-102.75 lg:w-full">
         {children}
       </div>
-      <div className="w-full min-h-20 md:w-1/2 h-full relative">
+      <div className="w-full min-h-18 md:w-1/2 md:h-full relative">
         <Image
           src="/images/care-food-bg-1.jpg"
           alt="Login Image"

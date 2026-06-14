@@ -42,7 +42,7 @@ export default function LangSwitcher() {
 
       <div
         className={`
-          absolute right-0 mt-3 
+          absolute right-0 mt-4 md:mt-3 
           rounded-xl shadow-lg border w-fit
           bg-white dark:bg-zinc-900
           border-zinc-200 dark:border-zinc-800
