@@ -6,7 +6,41 @@
     "title": "Перне басқару"
   },
   "Navigation": {
-     "dashboard": "Басқару тақтасы",
+    "today": "Бүгін",
+    "dashboard": "Басқару тақтасы",
     "analytics": "Талдау"
+  },
+   "UserMenu": {
+    "profile": "Профиль",
+    "settings": "Баптаулар",
+    "logout": "Шығу"
+  },
+     "Auth": {
+    "email": "Email",
+    "emailPlaceholder": "Email мекенжайын енгізіңіз",
+    "password": "Құпия сөз",
+    "passwordPlaceholder": "Құпия сөзді енгізіңіз",
+    "name": "Атыңыз",
+    "namePlaceholder": "Атыңызды енгізіңіз",
+
+    "forgotPassword": "Құпия сөзді ұмыттыңыз ба?",
+    "togglePasswordVisibility": "Құпия сөзді көрсету/жасыру",
+
+    "login": "Кіру",
+    "register": "Тіркелу",
+
+    "or": "Немесе",
+
+    "continueWithGoogle": "Google арқылы жалғастыру",
+    "continueWithApple": "Apple арқылы жалғастыру",
+
+    "noAccount": "Аккаунтыңыз жоқ па?",
+    "haveAccount": "Аккаунтыңыз бар ма?",
+
+    "welcomeBack": "Қайта қош келдіңіз!",
+    "loginSubtitle": "Жұмысты жалғастыру үшін аккаунтқа кіріңіз.",
+
+    "welcome": "CareFood-қа қош келдіңіз!",
+    "registerSubtitle": "Аккаунт жасау үшін мәліметтерді толтырыңыз."
   }
 }

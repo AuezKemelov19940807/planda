@@ -10,6 +10,7 @@ import SocialAuth from "./SocialAuth";
 import NameField from "./NameField";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
+import { useTranslations } from "next-intl";
 
 type Mode = "login" | "register";
 
@@ -19,8 +20,10 @@ interface Props {
 
 export default function AuthForm({ mode }: Props) {
   const router = useRouter();
-  const { login, register, loading, error } = useAuthStore();
+  const { login, register, isAuthLoading, error } = useAuthStore();
+  const t = useTranslations("Auth");
   const isLogin = mode === "login";
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -59,7 +62,10 @@ export default function AuthForm({ mode }: Props) {
 
   return (
     <div>
-      <form className="flex flex-col gap-y-6 mb-9" onSubmit={handleSubmit}>
+      <form
+        className="flex flex-col gap-y-6 mb-5 md:mb-9"
+        onSubmit={handleSubmit}
+      >
         {!isLogin && (
           <NameField
             value={form.name}
@@ -76,7 +82,10 @@ export default function AuthForm({ mode }: Props) {
           value={form.password}
           onChange={(val) => setForm({ ...form, password: val })}
         />
-        <AuthButton loading={loading} text={isLogin ? "Кіру" : "Тіркелу"} />
+        <AuthButton
+          loading={isAuthLoading}
+          text={isLogin ? t("login") : t("register")}
+        />
       </form>
       <Deliver />
       <SocialAuth />

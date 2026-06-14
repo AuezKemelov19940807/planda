@@ -7,7 +7,41 @@
   },
 
     "Navigation": {
+    "today": "Сегодня",
      "dashboard": "Панель управления",
     "analytics": "Аналитика"
+  },
+   "UserMenu": {
+    "profile": "Профиль",
+    "settings": "Настройки",
+    "logout": "Выход"
+  },
+ "Auth": {
+    "email": "Email",
+    "emailPlaceholder": "Введите ваш email",
+    "password": "Пароль",
+    "passwordPlaceholder": "Введите ваш пароль",
+    "name": "Имя",
+    "namePlaceholder": "Введите имя",
+
+    "forgotPassword": "Забыли пароль?",
+    "togglePasswordVisibility": "Показать/скрыть пароль",
+
+    "login": "Войти",
+    "register": "Зарегистрироваться",
+
+    "or": "Или",
+
+    "continueWithGoogle": "Продолжить через Google",
+    "continueWithApple": "Продолжить через Apple",
+
+    "noAccount": "Нет аккаунта?",
+    "haveAccount": "Уже есть аккаунт?",
+
+    "welcomeBack": "Добро пожаловать обратно!",
+    "loginSubtitle": "Войдите в аккаунт, чтобы продолжить работу.",
+
+    "welcome": "Добро пожаловать в CareFood!",
+    "registerSubtitle": "Заполните данные для создания аккаунта."
   }
 }

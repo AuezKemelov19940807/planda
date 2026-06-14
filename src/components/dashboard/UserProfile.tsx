@@ -14,6 +14,7 @@ import { useAuthStore } from "@/store/auth.store";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 function UserSkeleton() {
   return (
@@ -26,9 +27,9 @@ function UserSkeleton() {
 
 export default function UserProfile() {
   const router = useRouter();
-  const { user, logout, loading } = useAuthStore();
+  const { user, logout, isAuthLoading } = useAuthStore();
   const [isOpen, setIsOpen] = useState(false);
-
+  const t = useTranslations("UserMenu");
   const ref = useClickOutside<HTMLDivElement>(() => setIsOpen(false));
 
   const handleLogOut = async () => {
@@ -36,7 +37,7 @@ export default function UserProfile() {
     router.push("/login");
   };
 
-    if (loading) {
+  if (!user) {
     return <UserSkeleton />;
   }
 
@@ -48,13 +49,13 @@ export default function UserProfile() {
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="
-              flex items-center cursor-pointer gap-2 font-medium text-sm
+              flex items-center cursor-pointer gap-2 font-medium text-xs md:text-sm
               text-zinc-800 dark:text-zinc-200
               hover:text-black dark:hover:text-white
               transition
             "
           >
-            <CircleUserRound size={28} />
+            <CircleUserRound className="w-5 h-5" />
             <span className="">{user.email}</span>
 
             <ChevronDown
@@ -85,12 +86,12 @@ export default function UserProfile() {
             <div className="flex flex-col py-2">
               <button className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
                 <User size={16} />
-                Профиль
+                {t("profile")}
               </button>
 
               <button className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
                 <Settings size={16} />
-                Настройки
+                {t("settings")}
               </button>
 
               <button
@@ -98,7 +99,7 @@ export default function UserProfile() {
                 className="flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition"
               >
                 <LogOut size={16} />
-                Выход
+                {t("logout")}
               </button>
             </div>
           </div>

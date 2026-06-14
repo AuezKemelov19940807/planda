@@ -1,3 +1,6 @@
+import LangSwitcher from "../ui/LangSwitcher";
+import Logo from "../ui/Logo";
+
 export default function AuthLayout({
   title,
   subtitle,
@@ -8,12 +11,14 @@ export default function AuthLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div>
-      <div className="mb-16">
-        <h1 className="text-3xl font-medium">{title}</h1>
-        <p>{subtitle}</p>
+    <div className="relative">
+      <div className="mb-2.5 md:mb-8 flex flex-col items-center gap-y-2.5 md:gap-y-4">
+        <Logo />
+        <h1 className="text-2xl lg:text-3xl font-medium text-center">
+          {title}
+        </h1>
+        <p className="text-sm md:text-base text-center">{subtitle}</p>
       </div>
-
       {children}
     </div>
   );

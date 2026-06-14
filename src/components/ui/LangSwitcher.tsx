@@ -25,7 +25,7 @@ export default function LangSwitcher() {
   };
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative text-xs lg:text-base" ref={ref}>
       <button
         className="cursor-pointer flex items-center gap-x-0.5"
         onClick={() => setIsOpen(!isOpen)}

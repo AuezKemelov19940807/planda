@@ -1,18 +1,23 @@
+"use client";
+
 import SideBar from "../../../components/dashboard/SideBar";
 import Header from "../../../components/dashboard/Header";
+import { useState } from "react";
 
 export default function DashboardLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const [sidebarOpen, setSidebarOpen] = useState(true);
+
   return (
-    <div className="container mx-auto py-4">
+    <div className="container mx-auto py-4 px-5">
       <div className="flex gap-x-20">
-        <SideBar />
+        <SideBar isOpen={sidebarOpen} />
 
         <main className="w-full min-h-screen">
-          <Header />
+          <Header onToggleSidebar={() => setSidebarOpen((prev) => !prev)} />
 
           <div
             className="

@@ -7,7 +7,41 @@
   },
 
   "Navigation": {
+    "today": "Today",
     "dashboard": "Dashboard",
     "analytics": "Analytics"
+  },
+   "UserMenu": {
+    "profile": "Profile",
+    "settings": "Settings",
+    "logout": "Logout"
+  },
+   "Auth": {
+    "email": "Email",
+    "emailPlaceholder": "Enter your email",
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+    "name": "Name",
+    "namePlaceholder": "Enter your name",
+
+    "forgotPassword": "Forgot password?",
+    "togglePasswordVisibility": "Show/hide password",
+
+    "login": "Sign In",
+    "register": "Sign Up",
+
+    "or": "Or",
+
+    "continueWithGoogle": "Continue with Google",
+    "continueWithApple": "Continue with Apple",
+
+    "noAccount": "Don't have an account?",
+    "haveAccount": "Already have an account?",
+
+    "welcomeBack": "Welcome back!",
+    "loginSubtitle": "Sign in to your account to continue.",
+
+    "welcome": "Welcome to CareFood!",
+    "registerSubtitle": "Fill in the details to create your account."
   }
 }

@@ -5,7 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useLocale } from "next-intl";
 import { useNavigation } from "@/shared/hooks/useNavigation";
-export default function Sidebar() {
+
+interface Props {
+  onItemClick?: () => void;
+}
+
+export default function Navigation({ onItemClick }: Props) {
   const pathname = usePathname();
   const locale = useLocale();
   const navigation = useNavigation();
@@ -31,9 +36,10 @@ export default function Sidebar() {
                   : "text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
               }
             `}
+            onClick={onItemClick}
           >
             <Icon size={22} className={isActive ? "text-yellow-400" : ""} />
-            <span className="font-medium">{item.title}</span>
+            <span className="font-medium whitespace-nowrap">{item.title}</span>
           </Link>
         );
       })}

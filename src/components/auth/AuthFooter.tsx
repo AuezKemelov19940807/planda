@@ -1,24 +1,25 @@
 import Link from "next/link";
-
+import { useTranslations } from "next-intl";
 type Mode = "login" | "register";
 
 export default function AuthFooter({ mode }: { mode: Mode }) {
+  const t = useTranslations("Auth");
   const isLogin = mode === "login";
 
   return (
     <p className="text-sm font-medium text-center mt-6">
       {isLogin ? (
         <>
-          Аккаунтыңыз жоқ па?{" "}
+          {t("noAccount")}{" "}
           <Link className="text-blue-700" href="/register">
-            Тіркелу
+            {t("register")}
           </Link>
         </>
       ) : (
         <>
-          Аккаунтыңыз бар ма?{" "}
+          {t("haveAccount")}{" "}
           <Link className="text-blue-700" href="/login">
-            Кіру
+            {t("login")}
           </Link>
         </>
       )}

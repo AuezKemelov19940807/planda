@@ -22,7 +22,9 @@ interface RegisterDto {
 interface AuthStore {
   user: User | null;
 
-  loading: boolean;
+  isAuthLoading: boolean;
+  isActionLoading: boolean;
+
   error: string | null;
 
   login: (data: LoginDto) => Promise<void>;
@@ -33,11 +35,12 @@ interface AuthStore {
 
 export const useAuthStore = create<AuthStore>((set) => ({
   user: null,
-  loading: false,
+  isAuthLoading: false,
+  isActionLoading: false,
   error: null,
   login: async (data: LoginDto) => {
     try {
-      set({ loading: true, error: null });
+      set({ isAuthLoading: true, error: null });
 
       const res = await api.post("/auth/login", data, {
         withCredentials: true,
@@ -51,12 +54,12 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       throw new Error(message);
     } finally {
-      set({ loading: false });
+      set({ isAuthLoading: false });
     }
   },
   register: async (data: RegisterDto) => {
     try {
-      set({ loading: true, error: null });
+      set({ isAuthLoading: true, error: null });
 
       const res = await api.post("/auth/register", data);
 
@@ -72,12 +75,12 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       throw new Error(message);
     } finally {
-      set({ loading: false });
+      set({ isAuthLoading: false });
     }
   },
   getProfile: async () => {
     try {
-      set({ loading: true, error: null });
+      set({ isAuthLoading: true, error: null });
       const profile = await api.get("/auth/profile");
       set({ user: profile.data });
     } catch (error: any) {
@@ -85,18 +88,19 @@ export const useAuthStore = create<AuthStore>((set) => ({
         error: error.response?.data?.message || "Failed to fetch profile",
       });
     } finally {
-      set({ loading: false });
+      set({
+        isAuthLoading: false,
+      });
     }
   },
   logout: async () => {
     try {
       await api.post("/auth/logout");
+      set({ user: null });
     } catch (error: any) {
       set({
         error: error.response?.data?.message || "Failed to logout",
       });
-    } finally {
-      set({ user: null });
     }
   },
 }));

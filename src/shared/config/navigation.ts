@@ -1,4 +1,4 @@
-import { LayoutDashboard, BarChart3 } from "lucide-react";
+import { LayoutDashboard, BarChart3, CalendarDays } from "lucide-react";
 import { useTranslations } from "next-intl";
 
 // export function useNavigation() {
@@ -19,6 +19,11 @@ import { useTranslations } from "next-intl";
 // }
 
 export const navigation = [
+  // {
+  //   key: "today",
+  //   path: "/today",
+  //   icon: CalendarDays,
+  // },
   {
     key: "dashboard",
     path: "/dashboard",

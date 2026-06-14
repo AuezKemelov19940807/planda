@@ -1,3 +1,6 @@
+import { useTranslations } from "next-intl";
+
 export default function Deliver() {
-  return <p className="text-center text-xs font-medium">Немесе</p>;
+  const t = useTranslations("Auth");
+  return <p className="text-center text-xs font-medium">{t("or")}</p>;
 }

@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 type Mode = "login" | "register";
 
@@ -11,6 +12,7 @@ interface Props {
 }
 
 export default function PasswordField({ value, onChange, mode }: Props) {
+  const t = useTranslations("Auth");
   const [show, setShow] = useState(false);
   const isLogin = mode === "login";
 
@@ -21,25 +23,26 @@ export default function PasswordField({ value, onChange, mode }: Props) {
           href="/forgot-password"
           className="text-xs text-blue-700 absolute text-blue right-0 font-medium cursor-pointer"
         >
-          forgot password
+          {t("forgotPassword")}
         </Link>
       )}
 
       <label className="block text-sm font-medium text-gray-700">
-        Құпия сөз
+        {t("password")}
       </label>
       <div className="relative">
         <input
           className="border-gray-300 border  outline-none py-2 px-2.5 rounded-lg w-full text-xs"
           type={show ? "text" : "password"}
           id="password"
-          placeholder="Құпия сөз енгізіңіз"
+          placeholder={t("passwordPlaceholder")}
           value={value}
           onChange={(e) => onChange(e.target.value)}
         />
 
         {value.length > 0 && (
           <button
+            type="button"
             className="absolute top-1/2 right-3 -translate-y-1/2 cursor-pointer"
             onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
               e.preventDefault();
