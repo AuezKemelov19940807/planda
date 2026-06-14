@@ -27,7 +27,7 @@ function UserSkeleton() {
 
 export default function UserProfile() {
   const router = useRouter();
-  const { user, logout, isAuthLoading } = useAuthStore();
+  const { user, logout, isAuthLoading, isHydrated } = useAuthStore();
   const [isOpen, setIsOpen] = useState(false);
   const t = useTranslations("UserMenu");
   const ref = useClickOutside<HTMLDivElement>(() => setIsOpen(false));
@@ -37,13 +37,12 @@ export default function UserProfile() {
     router.push("/login");
   };
 
-  if (isAuthLoading) {
-    return <UserSkeleton />;
-  }
-
   return (
     <div ref={ref} className="relative">
-      {user ? (
+      {/* LOADING */}
+      {!isHydrated || isAuthLoading ? (
+        <UserSkeleton />
+      ) : user ? (
         <>
           {/* Trigger */}
           <button
@@ -56,7 +55,7 @@ export default function UserProfile() {
             "
           >
             <CircleUserRound className="w-5 h-5" />
-            <span className="">{user.email}</span>
+            <span>{user.email}</span>
 
             <ChevronDown
               size={16}

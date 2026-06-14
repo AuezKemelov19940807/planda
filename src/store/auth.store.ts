@@ -1,5 +1,4 @@
 import { api } from "@/shared/lib/api";
-
 import { create } from "zustand";
 
 interface User {
@@ -8,39 +7,38 @@ interface User {
   email: string;
 }
 
-interface LoginDto {
-  email: string;
-  password: string;
-}
-
-interface RegisterDto {
-  name: string;
-  email: string;
-  password: string;
-}
-
 interface AuthStore {
   user: User | null;
 
   isAuthLoading: boolean;
   isActionLoading: boolean;
+  isInitialized: boolean;
 
   error: string | null;
 
-  login: (data: LoginDto) => Promise<void>;
-  register: (data: RegisterDto) => Promise<void>;
+  isHydrated: boolean;
+
+  login: (data: any) => Promise<void>;
+  register: (data: any) => Promise<void>;
   getProfile: () => Promise<void>;
+  initAuth: () => Promise<void>;
   logout: () => Promise<void>;
 }
 
-export const useAuthStore = create<AuthStore>((set) => ({
+export const useAuthStore = create<AuthStore>((set, get) => ({
   user: null,
+
   isAuthLoading: false,
   isActionLoading: false,
+  isInitialized: false,
+
+  isHydrated: false,
+
   error: null,
-  login: async (data: LoginDto) => {
+
+  login: async (data) => {
     try {
-      set({ isAuthLoading: true, error: null });
+      set({ isActionLoading: true, error: null });
 
       const res = await api.post("/auth/login", data, {
         withCredentials: true,
@@ -48,59 +46,74 @@ export const useAuthStore = create<AuthStore>((set) => ({
 
       set({ user: res.data.user });
     } catch (error: any) {
-      const message = error.response?.data?.message || "Login failed";
-
-      set({ error: message });
-
-      throw new Error(message);
+      set({ error: error.response?.data?.message || "Login failed" });
+      throw error;
     } finally {
-      set({ isAuthLoading: false });
+      set({ isActionLoading: false });
     }
   },
-  register: async (data: RegisterDto) => {
+
+  register: async (data) => {
     try {
-      set({ isAuthLoading: true, error: null });
+      set({ isActionLoading: true, error: null });
 
       const res = await api.post("/auth/register", data);
 
-      set({
-        user: res.data.user,
+      set({ user: res.data.user });
+    } catch (error: any) {
+      set({ error: error.response?.data?.message || "Register failed" });
+      throw error;
+    } finally {
+      set({ isActionLoading: false });
+    }
+  },
+
+  getProfile: async () => {
+    try {
+      set({ isAuthLoading: true, error: null });
+
+      const res = await api.get("/auth/profile", {
+        withCredentials: true,
       });
 
-      return res.data;
-    } catch (error: any) {
-      const message = error.response?.data?.message || "Register failed";
-
-      set({ error: message });
-
-      throw new Error(message);
+      set({ user: res.data });
+    } catch {
+      set({ user: null });
     } finally {
       set({ isAuthLoading: false });
     }
   },
-  getProfile: async () => {
+
+  initAuth: async () => {
+    const { isHydrated } = get();
+
+    if (isHydrated) return;
+
+    set({ isAuthLoading: true });
+
     try {
-      set({ isAuthLoading: true, error: null });
-      const profile = await api.get("/auth/profile");
-      set({ user: profile.data });
-    } catch (error: any) {
-      set({
-        error: error.response?.data?.message || "Failed to fetch profile",
+      const res = await api.get("/auth/profile", {
+        withCredentials: true,
       });
+
+      set({ user: res.data });
+    } catch {
+      set({ user: null });
     } finally {
       set({
         isAuthLoading: false,
+        isHydrated: true,
       });
     }
   },
+
   logout: async () => {
     try {
       await api.post("/auth/logout");
+
       set({ user: null });
     } catch (error: any) {
-      set({
-        error: error.response?.data?.message || "Failed to logout",
-      });
+      set({ error: error.response?.data?.message || "Logout failed" });
     }
   },
 }));

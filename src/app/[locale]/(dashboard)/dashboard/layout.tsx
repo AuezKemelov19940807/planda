@@ -9,14 +9,15 @@ export default function DashboardLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const { getProfile } = useAuthStore();
+  const { initAuth, isHydrated } = useAuthStore();
 
   useEffect(() => {
-    getProfile().catch(() => {
-      router.push("/login");
-    });
+    initAuth();
   }, []);
+
+  if (!isHydrated) {
+    return null; // или skeleton layout
+  }
 
   return children;
 }
