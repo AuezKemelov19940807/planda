@@ -62,7 +62,7 @@ export default function Header() {
               <HeaderMenu />
             </div>
 
-            <div className=" mb-5">
+            <div className="flex flex-col items-start mb-5">
               <button className="font-semibold text-xl mt-5">
                 <span>Войти</span>
               </button>

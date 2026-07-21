@@ -74,6 +74,7 @@ export default function Reviews() {
             <Swiper
               spaceBetween={24}
               slidesPerView={3}
+              wrapperClass="items-stretch"
               breakpoints={{
                 0: {
                   slidesPerView: 1.2,
@@ -95,11 +96,8 @@ export default function Reviews() {
               }}
             >
               {items.map((item) => (
-                <SwiperSlide
-                  className="shadow-md min-h-full flex flex-col  border-gray-100 dark:border-white/10 border rounded-xl p-5 mb-5"
-                  key={item.id}
-                >
-                  <div className="flex flex-col min-h-full">
+                <SwiperSlide key={item.id} className="h-auto">
+                  <div className="shadow-md min-h-62.5 flex flex-col h-full bg-amber-200  border-gray-100 dark:border-white/10 border rounded-xl p-5 mb-5">
                     <p className="text-black flex-1 dark:text-white opacity-70 mb-5 max-w-80 ">
                       "{item.desc}"
                     </p>

@@ -67,7 +67,7 @@ const items = [
 ];
 
 export default function Faq() {
-  const [openId, setOpenId] = useState<number | null>(1);
+  const [openId, setOpenId] = useState<number | null>(null);
   const faqRef = useRef<HTMLDivElement>(null);
   const handleToggle = (id: number) => {
     setOpenId((prev) => (prev === id ? null : id));
