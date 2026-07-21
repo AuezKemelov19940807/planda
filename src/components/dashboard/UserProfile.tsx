@@ -54,7 +54,13 @@ export default function UserProfile() {
               transition
             "
           >
-            <CircleUserRound className="w-5 h-5" />
+            <div>
+              <img
+                className="w-10 h-10 rounded-full object-cover"
+                src={user.image}
+                alt=""
+              />
+            </div>
             <span>{user.email}</span>
 
             <ChevronDown
@@ -83,10 +89,13 @@ export default function UserProfile() {
             `}
           >
             <div className="flex flex-col py-2">
-              <button className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+              <Link
+                className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+                href="/profile"
+              >
                 <User size={16} />
                 {t("profile")}
-              </button>
+              </Link>
 
               <button className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
                 <Settings size={16} />

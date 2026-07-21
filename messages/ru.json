@@ -7,7 +7,7 @@
   },
 
     "Navigation": {
-    "today": "Сегодня",
+    "dailyPlan": "План на день",
      "dashboard": "Панель управления",
     "analytics": "Аналитика"
   },

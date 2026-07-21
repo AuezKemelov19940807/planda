@@ -20,14 +20,15 @@ import { useTranslations } from "next-intl";
 
 export const navigation = [
   // {
-  //   key: "today",
-  //   path: "/today",
-  //   icon: CalendarDays,
+  //   key: "dashboard",
+  //   path: "/dashboard",
+  //   icon: LayoutDashboard,
   // },
+
   {
-    key: "dashboard",
-    path: "/dashboard",
-    icon: LayoutDashboard,
+    key: "dailyPlan",
+    path: "/daily-plan",
+    icon: CalendarDays,
   },
   {
     key: "analytics",

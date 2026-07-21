@@ -7,7 +7,7 @@
   },
 
   "Navigation": {
-    "today": "Today",
+    "dailyPlan": "Daily plan",
     "dashboard": "Dashboard",
     "analytics": "Analytics"
   },

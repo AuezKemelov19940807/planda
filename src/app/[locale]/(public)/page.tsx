@@ -1,29 +1,96 @@
+import Benefits from "@/components/public/Benefits";
+import Faq from "@/components/public/Faq";
+import Features from "@/components/public/Features";
+import Go from "@/components/public/Go";
+import Header from "@/components/public/Header";
+import Hero from "@/components/public/Hero";
+import HowItWorks from "@/components/public/HowItWorks";
+import Reviews from "@/components/public/Reviews";
+import WhoIsItFor from "@/components/public/WhoIsItFor";
 import Logo from "@/components/ui/Logo";
-import Link from "next/link";
+import {
+  Send,
+  Globe,
+  MessageCircle,
+  AtSign,
+  Link,
+  ExternalLink,
+  Share2,
+} from "lucide-react";
 
 export default function LandingPage() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center text-center px-4">
-      <Logo />
+    <div className="flex flex-col h-full ">
+      <Header />
+      <main className="flex-1">
+        <Hero />
+        <Features />
+        <HowItWorks />
+        <Benefits />
 
-      <h1 className="text-3xl font-bold mt-6">Добро пожаловать в CareFood</h1>
+        <WhoIsItFor />
 
-      <p className="text-gray-600 mt-2">Лендинг в разработке 🚧</p>
+        <Reviews />
 
-      <p className="text-gray-500 mt-1">
-        Но вы уже можете войти в систему и протестировать приложение
-      </p>
+        <Faq />
 
-      <Link
-        href="/dashboard"
-        className="mt-6 bg-green text-white px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition"
-      >
-        Перейти к Админ панели
-      </Link>
+        <Go />
+      </main>
 
-      <footer className="absolute bottom-6 text-xs text-gray-400">
-        © 2026 CareFood
+      <footer className="container mx-auto px-4 lg:px-5  ">
+        <div className="grid md:grid-cols-2-reversed lg:grid-cols-4 gap-10 2xl:gap-30  border-t dark:border-white/10 pt-5 md:pt-10 pb-10">
+          <div>
+            <Logo />
+            <p className="text-sm">© 2026 Planola. Все права защищены.</p>
+          </div>
+          <div>
+            <p className="font-semibold mb-1">Остались вопросы? Мы рядом</p>
+            <p className="text-black dark:text-white opacity-70">
+              Напишите нам - мы подкскжем и поможем, как упростить планирование
+              и достичь целей с Planola
+            </p>
+          </div>
+          <div className="text-black dark:text-white opacity-70">
+            <ul className="flex flex-col  gap-y-2 mb-1">
+              <li className="flex gap-x-1">
+                <Send color="#F5C212" />
+                <a href="" target="_blank">
+                  Twitter
+                </a>
+              </li>
+              <li className="flex gap-x-1">
+                <MessageCircle color="#F5C212" />
+                <a href="" target="_blank">
+                  Telegram
+                </a>
+              </li>
+              <li className="flex gap-x-1">
+                <AtSign color="#F5C212" />
+                <a href="" target="_blank">
+                  Instagram
+                </a>
+              </li>
+            </ul>
+            <p className="text-sm">Отвечаем в течение 1 рабочего дня</p>
+          </div>
+          <div className="lg:justify-self-end">
+            <button className="inline-flex border mb-5 items-center border-yellow px-10 gap-x-4 py-2.5 rounded-2xl">
+              <span className="text-yellow font-bold whitespace-nowrap">
+                Написать нам
+              </span>
+              <span>
+                <MessageCircle size={18} color="#F5C212" />
+              </span>
+            </button>
+            <p className="text-black text-sm dark:text-white opacity-70">
+              Без спама. Без навязование.
+            </p>
+            <p className="text-black text-sm dark:text-white opacity-70">
+              Только по делу
+            </p>
+          </div>
+        </div>
       </footer>
-    </main>
+    </div>
   );
 }

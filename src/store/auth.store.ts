@@ -5,6 +5,7 @@ interface User {
   id: number;
   name: string;
   email: string;
+  image: string;
 }
 
 interface AuthStore {
@@ -23,6 +24,7 @@ interface AuthStore {
   getProfile: () => Promise<void>;
   initAuth: () => Promise<void>;
   logout: () => Promise<void>;
+  editProfile: (data: any) => Promise<void>;
 }
 
 export const useAuthStore = create<AuthStore>((set, get) => ({
@@ -81,6 +83,27 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
       set({ user: null });
     } finally {
       set({ isAuthLoading: false });
+    }
+  },
+
+  editProfile: async (data: any) => {
+    try {
+      set({ isActionLoading: true, error: null });
+
+      const res = await api.patch("/auth/edit-profile", data, {
+        withCredentials: true,
+      });
+
+      set({
+        user: res.data,
+      });
+    } catch (error: any) {
+      set({
+        error: error.response?.data?.message || "Edit profile failed",
+      });
+      throw error;
+    } finally {
+      set({ isActionLoading: false });
     }
   },
 

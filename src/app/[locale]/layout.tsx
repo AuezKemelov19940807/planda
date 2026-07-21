@@ -17,7 +17,7 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html suppressHydrationWarning className={`h-full antialiased`}>
+    <html suppressHydrationWarning className={`min-h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <NextIntlClientProvider>
           <ThemeProvider>{children}</ThemeProvider>

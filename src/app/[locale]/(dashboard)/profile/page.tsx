@@ -1,3 +1,7 @@
-export default function Profile() {
-  return <h1>Profile</h1>;
+import Profile from "@/components/dashboard/Profile";
+
+export default function ProfilePage() {
+  return <div>
+    <Profile/>
+  </div>;
 }
