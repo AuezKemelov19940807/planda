@@ -56,12 +56,10 @@ export default function Header() {
       <div className="flex container mx-auto items-center justify-between">
         <Logo />
         {/* Burger */}
-        <button
-          className="block lg:hidden"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          <Menu />
-        </button>
+        <div className="flex gap-x-4 lg:hidden">
+          <ThemeToggle />
+          <Menu onClick={() => setIsMenuOpen(!isMenuOpen)} />
+        </div>
         <div
           className={`fixed  lg:hidden top-0 left-0 w-full h-full bg-black/50 z-50 transition-opacity duration-300 ${isMenuOpen ? "opacity-100" : "opacity-0 pointer-events-none"}`}
           onClick={() => setIsMenuOpen(false)}
