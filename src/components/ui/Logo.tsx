@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Logo() {
   return (
     <Link className="" href="/">
-      <Image src="/icons/logo-planola.png" alt="Logo" width={180} height={50} />
+      <Image src="/icons/logo-planola.png" alt="Logo" width={140} height={30} />
     </Link>
   );
 }

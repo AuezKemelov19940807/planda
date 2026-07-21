@@ -97,7 +97,7 @@ export default function Reviews() {
             >
               {items.map((item) => (
                 <SwiperSlide key={item.id} className="h-auto">
-                  <div className="shadow-md min-h-62.5 flex flex-col h-full bg-amber-200  border-gray-100 dark:border-white/10 border rounded-xl p-5 mb-5">
+                  <div className="shadow-md min-h-62.5 flex flex-col h-fullt border-gray-100 dark:border-white/10 border rounded-xl p-5 mb-5">
                     <p className="text-black flex-1 dark:text-white opacity-70 mb-5 max-w-80 ">
                       "{item.desc}"
                     </p>

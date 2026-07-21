@@ -10,6 +10,18 @@ import { usePathname, useRouter } from "next/navigation";
 const locales = ["en", "kk", "ru"];
 
 export default function Header() {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();
@@ -36,7 +48,11 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header className=" w-full px-4 lg:px-5 py-2.5 lg:py-5">
+    <header
+      className={`fixed z-50 w-full px-4 lg:px-5 transition-all duration-300 ${
+        scrolled ? "bg-yellow/50 backdrop-blur-xl shadow-lg " : "bg-transparent"
+      }`}
+    >
       <div className="flex container mx-auto items-center justify-between">
         <Logo />
         {/* Burger */}
@@ -66,7 +82,7 @@ export default function Header() {
               <button className="font-semibold text-xl mt-5">
                 <span>Войти</span>
               </button>
-              <button className="font-semibold mt-5 bg-yellow text-black px-2.5 2xl:px-5 py-2.5 rounded-xl ">
+              <button className="font-semibold mt-5  bg-yellow text-black px-5 2xl:px-5 py-2.5 rounded-xl ">
                 <span>Начать бесплатно</span>
               </button>
               <div className="flex  py-2 mt-2">
