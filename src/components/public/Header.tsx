@@ -10,18 +10,6 @@ import { usePathname, useRouter } from "next/navigation";
 const locales = ["en", "kk", "ru"];
 
 export default function Header() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const pathname = usePathname();
@@ -48,11 +36,7 @@ export default function Header() {
   }, [isMenuOpen]);
 
   return (
-    <header
-      className={`fixed z-50 w-full px-4 lg:px-5 transition-all duration-300 ${
-        scrolled ? "bg-yellow/50 backdrop-blur-xl shadow-lg " : "bg-transparent"
-      }`}
-    >
+    <header className="z-40 w-full px-4 lg:px-5 transition-all duration-300  shadow-lg">
       <div className="flex container mx-auto items-center justify-between">
         <Logo />
         {/* Burger */}
@@ -65,7 +49,7 @@ export default function Header() {
           onClick={() => setIsMenuOpen(false)}
         ></div>
         <div
-          className={`fixed lg:hidden top-0  overflow-y-auto px-5 left-0 w-64 h-full bg-white dark:bg-zinc-950 z-50 transition-transform duration-300 ${
+          className={`fixed  lg:hidden top-0  overflow-y-auto px-5 left-0 w-64 h-full bg-white dark:bg-zinc-950 z-50 transition-transform duration-300 ${
             isMenuOpen ? "translate-x-0" : "-translate-x-full"
           }`}
         >
