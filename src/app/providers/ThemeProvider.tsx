@@ -12,7 +12,6 @@ export default function ThemeProvider({
       attribute="class"
       defaultTheme="system"
       enableSystem
-      disableTransitionOnChange
       storageKey="theme"
       enableColorScheme={false}
     >

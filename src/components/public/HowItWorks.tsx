@@ -33,7 +33,7 @@ const items = [
 
 export default function HowItWorks() {
   return (
-    <div className="mb-5">
+    <section className="pt-5 mb-5" id="how-it-works">
       <div className="container mx-auto px-4 lg:px-5">
         <h2 className="font-semibold text-xl md:text-2xl text-center mb-5">
           Как это
@@ -93,6 +93,6 @@ export default function HowItWorks() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

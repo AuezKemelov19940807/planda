@@ -6,6 +6,7 @@ import ThemeToggle from "../ui/ThemeToggle";
 import { Menu } from "lucide-react";
 import HeaderMenu from "../ui/Menu";
 import { usePathname, useRouter } from "next/navigation";
+import SignInButton from "../ui/SignInButton";
 
 const locales = ["en", "kk", "ru"];
 
@@ -35,6 +36,10 @@ export default function Header() {
     };
   }, [isMenuOpen]);
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <header className="z-40 w-full px-4 lg:px-5 transition-all duration-300  shadow-lg">
       <div className="flex container mx-auto items-center justify-between">
@@ -57,13 +62,11 @@ export default function Header() {
             <div className=" flex-1 flex flex-col gap-y-5 ">
               <Logo />
 
-              <HeaderMenu />
+              <HeaderMenu closeMenu={closeMenu} />
             </div>
 
             <div className="flex flex-col items-start mb-5">
-              <button className="font-semibold text-xl mt-5">
-                <span>Войти</span>
-              </button>
+              <SignInButton />
               <button className="font-semibold mt-5  bg-yellow text-black px-5 2xl:px-5 py-2.5 rounded-xl ">
                 <span>Начать бесплатно</span>
               </button>
@@ -92,9 +95,7 @@ export default function Header() {
               <LangSwitcher />
             </div>
             <div className="flex items-center  gap-x-2.5 2xl:gap-x-5">
-              <button className="font-semibold">
-                <span>Войти</span>
-              </button>
+              <SignInButton />
               <button className="font-semibold bg-yellow text-black px-2.5 2xl:px-5 py-2.5 rounded-xl ">
                 <span>Начать бесплатно</span>
               </button>

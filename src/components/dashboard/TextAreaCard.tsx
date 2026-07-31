@@ -1,24 +1,21 @@
 "use client";
 
-import { useState } from "react";
+import { StaticImageData } from "next/image";
+import { ReactNode, useState } from "react";
 
 type TextAreaCardProps = {
-  title: string;
+  icon: string;
   placeholder: string;
 };
 
-export default function TextAreaCard({
-  title,
-  placeholder,
-}: TextAreaCardProps) {
+export default function TextAreaCard({ placeholder, icon }: TextAreaCardProps) {
   const [text, setText] = useState("");
 
   return (
-    <div className="bg-white dark:bg-zinc-900 rounded-2xl p-5 transition-colors">
-      <h2 className="text-2xl font-semibold text-center mb-5 text-zinc-900 dark:text-zinc-100">
-        {title}
-      </h2>
-
+    <div className="px-2 md:px-5 relative">
+      <span className="absolute right-10 top-15 w-12.5 h-12.5 ">
+        <img className="max-w-12.5 max-h-12.5" src={icon} />
+      </span>
       <textarea
         value={text}
         onChange={(e) => setText(e.target.value)}
@@ -31,16 +28,14 @@ export default function TextAreaCard({
           rounded-lg
           outline-none
           bg-white
-          dark:bg-zinc-800
+          dark:bg-[#0D1012] 
           border
-          border-zinc-300
-          dark:border-zinc-700
+       border-light-gray  dark:border-dark-gray
           text-zinc-900
           dark:text-zinc-100
           placeholder:text-zinc-400
           dark:placeholder:text-zinc-500
-          focus:border-black
-          dark:focus:border-zinc-400
+
           transition-colors
         "
       />

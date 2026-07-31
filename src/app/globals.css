@@ -10,7 +10,7 @@
 }
 
 html.dark {
-  --background: #111111;;
+  --background: #090C0E;
   --foreground: #FEFEFE;
 }
 
@@ -27,6 +27,9 @@ body {
   --color-green: #3A5B22;
   --color-yellow: #F5C212;
   --color-black: #111111;
+  --color-light-gray: #ECEEF0;
+  --color-middle-gray:#0F1215;
+  --color-dark-gray:#1C1E20;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
@@ -68,6 +71,107 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
+
+.planola-calendar {
+  width: 360px;
+  border: none !important;
+  border-radius: 20px;
+  padding: 18px;
+  background: white;
+  box-shadow:
+    0 15px 40px rgb(0 0 0 / 0.12),
+    0 4px 10px rgb(0 0 0 / 0.08);
+}
+
+.dark .planola-calendar {
+  background: #18181b;
+  color: #fff;
+}
+
+.planola-calendar button {
+  border-radius: 10px;
+  transition: .2s;
+}
+
+.planola-calendar button:hover {
+  background: rgb(34 197 94 / .12);
+}
+
+.planola-calendar .react-calendar__navigation {
+  margin-bottom: 16px;
+}
+
+.planola-calendar .react-calendar__navigation button {
+  min-width: 40px;
+  height: 40px;
+  font-size: 17px;
+  font-weight: 600;
+  color: inherit;
+}
+
+.planola-calendar .react-calendar__month-view__weekdays {
+  text-transform: uppercase;
+  font-size: 11px;
+  color: #71717a;
+}
+
+.dark .planola-calendar .react-calendar__month-view__weekdays {
+  color: #a1a1aa;
+}
+
+.planola-calendar .react-calendar__tile {
+  height: 42px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.planola-calendar .react-calendar__tile:hover {
+  background: rgb(34 197 94 / .15);
+}
+
+.planola-calendar .react-calendar__tile--now {
+  background: rgb(34 197 94 / .2);
+  color: #16a34a;
+  font-weight: 700;
+}
+
+.planola-calendar .react-calendar__tile--active {
+  background: #22c55e !important;
+  color: white !important;
+}
+
+.planola-calendar .react-calendar__navigation button:enabled:hover,
+.planola-calendar .react-calendar__navigation button:enabled:focus {
+  background: rgb(34 197 94 / .15);
+}
+
+.dark .planola-calendar .react-calendar__navigation button {
+  color: white;
+}
+
+.dark .planola-calendar .react-calendar__tile {
+  color: white;
+}
+
+.dark .planola-calendar .react-calendar__tile:hover {
+  background: rgb(34 197 94 / .2);
+}
+
+.dark .planola-calendar .react-calendar__tile--now {
+  background: rgb(34 197 94 / .25);
+}
+
+.dark .planola-calendar .react-calendar__navigation button:enabled:hover {
+  background: rgb(34 197 94 / .2);
+}
+
+.planola-calendar .react-calendar__month-view__weekdays abbr {
+  text-decoration: none;
+}
 
 
 

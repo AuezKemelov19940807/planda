@@ -16,7 +16,7 @@ export default function Navigation({ onItemClick }: Props) {
   const navigation = useNavigation();
 
   return (
-    <nav className="flex flex-col gap-y-3">
+    <nav className="flex flex-col gap-y-3 md:px-5">
       {navigation.map((item) => {
         const Icon = item.icon;
 
@@ -29,17 +29,21 @@ export default function Navigation({ onItemClick }: Props) {
             className={`
               flex items-center gap-x-4 px-5 py-4 rounded-xl
               transition-all duration-200
+              font-bold
 
               ${
                 isActive
-                  ? "bg-zinc-900 text-white dark:bg-white dark:text-zinc-900"
+                  ? "bg-[#FEF6DA] text-black font-black dark:bg-[#1D1B10] dark:text-yellow border-transparent dark:border-yellow dark:border"
                   : "text-zinc-500 hover:bg-zinc-100 dark:text-zinc-400 dark:hover:bg-zinc-800"
               }
             `}
             onClick={onItemClick}
           >
-            <Icon size={22} className={isActive ? "text-yellow-400" : ""} />
-            <span className="font-medium whitespace-nowrap">{item.title}</span>
+            <Icon
+              size={22}
+              className={isActive ? "text-black dark:text-yellow" : ""}
+            />
+            <span className="font-bold whitespace-nowrap">{item.title}</span>
           </Link>
         );
       })}

@@ -20,7 +20,7 @@ interface Props {
 
 export default function AuthForm({ mode }: Props) {
   const router = useRouter();
-  const { login, register, isAuthLoading, error } = useAuthStore();
+  const { login, register, isActionLoading, error } = useAuthStore();
   const t = useTranslations("Auth");
   const isLogin = mode === "login";
 
@@ -40,7 +40,7 @@ export default function AuthForm({ mode }: Props) {
         });
 
         toast.success("Добро пожаловать!");
-        router.push("/dashboard");
+        router.push("/daily-plan");
       } catch (err: any) {
         toast.error(err.message);
       }
@@ -83,7 +83,7 @@ export default function AuthForm({ mode }: Props) {
           onChange={(val) => setForm({ ...form, password: val })}
         />
         <AuthButton
-          loading={isAuthLoading}
+          loading={isActionLoading}
           text={isLogin ? t("login") : t("register")}
         />
       </form>

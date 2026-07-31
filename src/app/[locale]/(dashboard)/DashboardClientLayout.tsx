@@ -2,8 +2,8 @@
 
 import Header from "@/components/dashboard/Header";
 import SideBar from "@/components/dashboard/SideBar";
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useAuthStore } from "@/store/auth.store";
 export default function DashboardClientLayout({
   children,
 }: {
@@ -11,23 +11,30 @@ export default function DashboardClientLayout({
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
+  const initAuth = useAuthStore((s) => s.initAuth);
+  const isHydrated = useAuthStore((s) => s.isHydrated);
+
+  useEffect(() => {
+    initAuth();
+  }, [initAuth]);
+
+  if (!isHydrated) {
+    return null; // или Loader
+  }
   return (
-    <div className="container mx-auto py-4 px-5">
+    <div className="w-full bg-[#FBFCFC] dark:bg-[#090C0E]">
       <div className="flex gap-x-20">
         <SideBar isOpen={sidebarOpen} />
 
-        <main className="w-full min-h-screen">
+        <main
+          className={`
+    w-full min-h-screen px-2.5 md:px-5 lg:px-10
+    transition-all duration-300
+    ${sidebarOpen ? "lg:ml-60" : "lg:ml-0"}
+  `}
+        >
           <Header onToggleSidebar={() => setSidebarOpen((p) => !p)} />
-          <div
-            className="
-              rounded-2xl p-5 w-full
-              bg-zinc-100 text-zinc-900
-              dark:bg-zinc-900 dark:text-zinc-100
-              transition-colors duration-300
-            "
-          >
-            {children}
-          </div>
+          <div>{children}</div>
         </main>
       </div>
     </div>

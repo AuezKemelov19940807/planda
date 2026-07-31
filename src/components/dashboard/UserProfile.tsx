@@ -4,9 +4,11 @@ import {
   User,
   Settings,
   LogOut,
+  Mail,
   ChevronDown,
   CircleUserRound,
   LogIn,
+  MessageCircle,
 } from "lucide-react";
 
 import { useClickOutside } from "@/shared/hooks/useClickOutside";
@@ -38,47 +40,48 @@ export default function UserProfile() {
   };
 
   return (
-    <div ref={ref} className="relative">
+    <div className="relative">
       {/* LOADING */}
       {!isHydrated || isAuthLoading ? (
         <UserSkeleton />
       ) : user ? (
         <>
           {/* Trigger */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="
-              flex items-center cursor-pointer gap-2 font-medium text-xs md:text-sm
-              text-zinc-800 dark:text-zinc-200
-              hover:text-black dark:hover:text-white
-              transition
-            "
-          >
-            <div>
-              <img
-                className="w-10 h-10 rounded-full object-cover"
-                src={user.image}
-                alt=""
+          <div className="flex items-center gap-x-2 md:gap-x-10">
+            <div className="flex gap-x-1 md:gap-x-2.5 items-center">
+              <span className="w-8 h-8 rounded-full flex items-center justify-center border border-[#26292C]">
+                <Mail size={20} />
+              </span>
+              <span className="text-sm md:text-base">{user.email}</span>
+            </div>
+            <div
+              ref={ref}
+              className="flex items-center cursor-pointer gap-x-10 relative w-20 md:w-25  dark:bg-[#0F1113] rounded-full border border-yellow dark:border-[#323537]"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <div className="border-2 border-yellow rounded-full">
+                <img
+                  className="w-8 h-8 md:w-10 md:h-10 rounded-full object-cover"
+                  src={user.image}
+                  alt=""
+                />
+              </div>
+              <ChevronDown
+                size={20}
+                className={`transition-transform  absolute top-1/2 -translate-y-1/2 right-2.5 md:right-5 duration-300 ${
+                  isOpen ? "rotate-180" : ""
+                }`}
               />
             </div>
-            <span>{user.email}</span>
-
-            <ChevronDown
-              size={16}
-              className={`transition-transform duration-300 ${
-                isOpen ? "rotate-180" : ""
-              }`}
-            />
-          </button>
-
+          </div>
           {/* Dropdown */}
           <div
             className={`
-              absolute right-0 mt-3 min-w-52
+              absolute right-0 mt-2 z-50
               rounded-xl shadow-lg border
               bg-white dark:bg-zinc-900
               border-zinc-200 dark:border-zinc-800
-              text-zinc-800 dark:text-zinc-200
+              text-zinc-800 dark:text-zinc-200 pt-2  
 
               transition-all duration-200
               ${
@@ -88,23 +91,23 @@ export default function UserProfile() {
               }
             `}
           >
-            <div className="flex flex-col py-2">
+            <div className="flex flex-col">
               <Link
-                className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
+                className="flex items-center gap-2 py-3 px-6  hover:bg-zinc-100 dark:hover:bg-zinc-800 transition"
                 href="/profile"
               >
                 <User size={16} />
                 {t("profile")}
               </Link>
 
-              <button className="flex items-center gap-2 px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
+              <button className="flex items-center gap-2  py-3 px-6  hover:bg-zinc-100 dark:hover:bg-zinc-800 transition">
                 <Settings size={16} />
                 {t("settings")}
               </button>
 
               <button
                 onClick={handleLogOut}
-                className="flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition"
+                className="flex items-center border-t border-gray-700 px-6  gap-2 py-3  text-red-500 hover:bg-red-50 dark:hover:bg-red-950/30 transition"
               >
                 <LogOut size={16} />
                 {t("logout")}

@@ -41,7 +41,7 @@ const items = [
 
 export default function WhoIsItFor() {
   return (
-    <div className="mb-5">
+    <section className="mb-5" id="for-who">
       <div className="container mx-auto px-4 lg:px-5">
         <div className="shadow-md border-gray-100 dark:border-white/10 border rounded-xl pt-5 md:pt-8 pb-5 px-2 md:px-5">
           <h2 className="font-semibold text-xl sm:text-2xl text-center mb-5">
@@ -75,6 +75,6 @@ export default function WhoIsItFor() {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }

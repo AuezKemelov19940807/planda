@@ -1,5 +1,5 @@
 "use client";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import LangSwitcher from "../ui/LangSwitcher";
 import ThemeToggle from "../ui/ThemeToggle";
 import PageTitle from "./PageTitle";
@@ -7,6 +7,9 @@ import UserProfile from "./UserProfile";
 import { useState } from "react";
 import Logo from "../ui/Logo";
 import Navigation from "./Navigation";
+import TodayHeader from "./TodayHeader";
+import SideBarToggleTheme from "./SideBarToggleTheme";
+import SideBarToggleLang from "./SideBarToggleLang";
 
 interface Props {
   onToggleSidebar: () => void;
@@ -29,11 +32,14 @@ export default function Header({ onToggleSidebar }: Props) {
             onClick={() => setMenuOpen(true)}
           />
         </div>
+        <div className="hidden lg:flex items-center justify-between gap-x-2">
+          {/* <PageTitle onClick={onToggleSidebar} /> */}
+          <TodayHeader />
+        </div>
 
-        <PageTitle onClick={onToggleSidebar} />
         <div className="flex items-center justify-end w-full lg:w-fit gap-x-4">
-          <ThemeToggle />
-          <LangSwitcher />
+          {/* <ThemeToggle />
+          <LangSwitcher /> */}
           <UserProfile />
         </div>
       </div>
@@ -50,18 +56,29 @@ export default function Header({ onToggleSidebar }: Props) {
       {/* DRAWER */}
       <div
         className={`
-          fixed top-0 left-0 h-full w-72 bg-white dark:bg-zinc-900
-          z-50 p-5 shadow-xl
-          transform transition-transform duration-300
+          fixed top-0 left-0 h-full w-64 md:w-72 bg-white dark:bg-zinc-900
+          z-50 p-2.5 md:p-5 shadow-xl
+          transform transition-transform duration-300  flex flex-col pb-5
           ${menuOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
         {/* close */}
-        <div className="flex justify-between items-center mb-8">
-          <Logo />
+        <button
+          className="absolute right-3 top-8"
+          onClick={() => setMenuOpen(false)}
+        >
+          <X className="text-gray-400" />
+        </button>
+        <div className="flex-1 h-full">
+          <div className="flex justify-between items-center mb-8">
+            <Logo />
+          </div>
+
+          <Navigation onItemClick={handleCloseMenu} />
         </div>
 
-        <Navigation onItemClick={handleCloseMenu} />
+        <SideBarToggleTheme />
+        <SideBarToggleLang />
       </div>
     </header>
   );

@@ -2,12 +2,27 @@ import type { Metadata } from "next";
 import DashboardClientLayout from "./DashboardClientLayout";
 
 export const metadata: Metadata = {
-  title: "CareFood Dashboard",
+  title: "Dashboard",
   description:
-    "Панель управления CareFood. Управление заказами, меню, пользователями и аналитикой.",
+    "Панель управления Planola. Управляйте задачами, привычками, финансами, календарем и аналитикой в одном месте.",
+
   robots: {
     index: false,
     follow: false,
+    nocache: true,
+  },
+
+  alternates: {
+    canonical: "https://planola.app/dashboard",
+  },
+
+  openGraph: {
+    title: "Planola Dashboard",
+    description:
+      "Личный кабинет Planola для управления продуктивностью, задачами, финансами и целями.",
+    url: "https://planola.app/dashboard",
+    siteName: "Planola",
+    type: "website",
   },
 };
 
