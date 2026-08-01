@@ -32,7 +32,7 @@ export default function PasswordField({ value, onChange, mode }: Props) {
       </label>
       <div className="relative">
         <input
-          className="border-gray-300 border  outline-none py-2 px-2.5 rounded-lg w-full text-xs"
+          className="border-gray-300 border  outline-none py-3 px-2.5 rounded-lg w-full text-xs"
           type={show ? "text" : "password"}
           id="password"
           placeholder={t("passwordPlaceholder")}

@@ -89,7 +89,7 @@ export default function Faq() {
 
   return (
     <section className="mb-5" id="faq">
-      <div className="container mx-auto px-4 lg:px-5">
+      <div className="container mx-auto px-2 md:px-4 lg:px-5">
         <div className="shadow-md border-gray-100 dark:border-white/10 border rounded-xl pt-5 md:pt-8 pb-5 px-2 md:px-5">
           <h2 className="font-semibold text-xl md:text-2xl text-center mb-5">
             Часто задаваемые
@@ -103,7 +103,7 @@ export default function Faq() {
               const isOpen = openId === item.id;
               return (
                 <div
-                  className="shadow-md border-gray-100 cursor-pointer dark:border-white/10 border rounded-xl px-2.5 md:px-5 py-1.5 md:py-2.5"
+                  className="shadow-md border-gray-100 cursor-pointer dark:border-white/10 border rounded-xl px-4 md:px-5 py-2.5"
                   key={item.id}
                   onClick={() => handleToggle(item.id)}
                 >

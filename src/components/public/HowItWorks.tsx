@@ -34,7 +34,7 @@ const items = [
 export default function HowItWorks() {
   return (
     <section className="pt-5 mb-5" id="how-it-works">
-      <div className="container mx-auto px-4 lg:px-5">
+      <div className="container mx-auto px-2 md:px-4 lg:px-5">
         <h2 className="font-semibold text-xl md:text-2xl text-center mb-5">
           Как это
           <span className="text-yellow"> работает?</span>

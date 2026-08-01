@@ -26,7 +26,7 @@ const items = [
 export default function Benefits() {
   return (
     <div className="mb-5">
-      <div className="container mx-auto px-4 lg:px-5">
+      <div className="container mx-auto px-2 md:px-4 lg:px-5">
         <div className="relative overflow-hidden   flex flex-col lg:flex-row gap-y-5 lg:gap-y-0 justify-between  shadow-md border-gray-100 dark:border-white/10 border rounded-xl pt-5 md:pt-8 pb-5 px-2 md:px-5">
           <div className="basis-1/2">
             <h2 className="font-semibold text-center md:text-left text-xl md:text-2xl mb-5">

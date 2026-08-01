@@ -3,7 +3,7 @@ import { LucideArrowRight, Rocket } from "lucide-react";
 export default function Go() {
   return (
     <div className="mb-5">
-      <div className="container mx-auto px-4 lg:px-5">
+      <div className="container mx-auto px-2 md:px-4 lg:px-5">
         <div className="relative overflow-hidden flex flex-col xl:flex-row xl:items-center justify-between gap-5 md:gap-10 rounded-3xl border border-gray-200 dark:border-white/10 bg-yellow/10 px-5 md:px-10 py-5 sm:py-10 shadow-md">
           {/* Background */}
           <div className="absolute inset-0 pointer-events-none">

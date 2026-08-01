@@ -13,7 +13,7 @@ export default function EmailField({ value, onChange }: Props) {
         {t("email")}
       </label>
       <input
-        className="border-gray-300 border  outline-none py-2 px-2.5 rounded-lg w-full text-xs text-gray"
+        className="border-gray-300 border  outline-none py-3 px-2.5 rounded-lg w-full text-xs text-gray"
         type="email"
         placeholder={t("emailPlaceholder")}
         value={value}

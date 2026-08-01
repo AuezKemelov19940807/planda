@@ -11,7 +11,7 @@ import Image from "next/image";
 export default function Hero() {
   return (
     <div className="pt-20 lg:pt-30 pb-5">
-      <div className="container mx-auto px-4 lg:px-5">
+      <div className="container mx-auto px-2 md:px-4 lg:px-5">
         <div className="flex flex-col lg:flex-row justify-between items-stretch w-full h-full gap-x-10 2xl:gap-x-20">
           <div className="py-5 md:py-10 basis-2/5">
             <p className="text-yellow text-sm sm:text-base md:text-xl font-bold uppercase pb-3 sm:pb-5 md:pb-10">

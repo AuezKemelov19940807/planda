@@ -64,7 +64,7 @@ export default function Header({ onToggleSidebar }: Props) {
       >
         {/* close */}
         <button
-          className="absolute right-3 top-8"
+          className="absolute right-3 top-5"
           onClick={() => setMenuOpen(false)}
         >
           <X className="text-gray-400" />

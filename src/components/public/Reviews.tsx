@@ -63,7 +63,7 @@ export default function Reviews() {
 
   return (
     <section className="mb-5" id="reviews">
-      <div className="container mx-auto px-4 lg:px-5">
+      <div className="container mx-auto px-2 md:px-4 lg:px-5">
         <div className="shadow-md border-gray-100 dark:border-white/10 border rounded-xl pt-5 md:pt-8 pb-10 px-2 md:px-5">
           <h2 className="font-semibold text-2xl text-center mb-5">
             Что говорят наши
